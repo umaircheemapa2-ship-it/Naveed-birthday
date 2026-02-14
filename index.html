@@ -4,14 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday My Love ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
 body{
 height:100vh;
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
+background:radial-gradient(circle at top,#ff4e8b,#8e2de2);
 display:flex;
 justify-content:center;
 align-items:center;
@@ -20,99 +25,101 @@ color:white;
 text-align:center;
 }
 
-.container{padding:20px;}
+.container{
+padding:20px;
+max-width:350px;
+animation:fadeIn 2s ease-in-out;
+}
 
-h1{font-family:'Great Vibes',cursive;font-size:38px;}
+h1{
+font-family:'Great Vibes',cursive;
+font-size:38px;
+}
 
-.name{font-size:24px;margin:5px 0;font-weight:600;}
+.name{
+font-size:24px;
+margin:5px 0;
+font-weight:800;
+}
 
 .message{
-margin-top:10px;
-font-size:14px;
-line-height:1.6;
-}
-
-.photo{
 margin-top:15px;
-}
-
-.photo img{
-width:150px;
-height:150px;
-border-radius:50%;
-object-fit:cover;
-border:4px solid white;
-box-shadow:0 0 20px white;
+font-size:15px;
+line-height:1.7;
+opacity:0;
+animation:showText 4s forwards;
+animation-delay:2s;
 }
 
 button{
-margin-top:20px;
-padding:10px 20px;
+margin-top:25px;
+padding:12px 25px;
 border:none;
-border-radius:25px;
+border-radius:30px;
 background:white;
-color:#ff4e8b;
-font-weight:600;
+color:#ff2e63;
+font-weight:700;
 cursor:pointer;
 transition:.3s;
 }
 
-button:hover{transform:scale(1.1);}
+button:hover{
+transform:scale(1.1);
+}
 
 .cake{
-display:none;
-font-size:80px;
+font-size:90px;
 margin-top:15px;
+display:none;
+animation:bounce 1s infinite alternate;
 }
 
 .footer{
 position:absolute;
 bottom:10px;
 font-size:12px;
-opacity:0.8;
+opacity:0.9;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes showText{
+to{opacity:1;}
+}
+
+@keyframes bounce{
+from{transform:translateY(0);}
+to{transform:translateY(-10px);}
 }
 
 /* Hearts */
 .heart{
 position:absolute;
-width:15px;
-height:15px;
-background:red;
-transform:rotate(45deg);
-animation:float 6s infinite;
+color:white;
+font-size:20px;
+animation:float 6s linear infinite;
 }
-
-.heart::before,
-.heart::after{
-content:"";
-position:absolute;
-width:15px;
-height:15px;
-background:red;
-border-radius:50%;
-}
-
-.heart::before{top:-7px;}
-.heart::after{left:-7px;}
 
 @keyframes float{
-0%{transform:translateY(0) rotate(45deg);}
-100%{transform:translateY(-110vh) rotate(45deg);}
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
 }
 
 /* Fireworks */
 .firework{
 position:absolute;
-width:5px;
-height:5px;
-background:yellow;
+width:6px;
+height:6px;
 border-radius:50%;
 animation:explode 1s ease-out forwards;
 }
 
 @keyframes explode{
-0%{transform:scale(1);}
-100%{transform:scale(15);opacity:0;}
+0%{transform:scale(1);opacity:1;}
+100%{transform:scale(20);opacity:0;}
 }
 </style>
 </head>
@@ -120,65 +127,66 @@ animation:explode 1s ease-out forwards;
 <body>
 
 <div class="container">
-<h1>Happy Birthday My Love ❤️</h1>
+<h1>Happy Birthday ❤️</h1>
 <div class="name">Naveed Akram</div>
 
-<div class="photo">
-<img src="yourphoto.jpg" alt="Our Photo">
-</div>
-
 <div class="message">
-Today I celebrate the love of my life.  
-Not just your birthday… but our journey.  
+Today is not just your birthday…  
+It’s the day my favorite person was born.  
 
-Growing together.  
-Winning together.  
-Building forever together 💍
+I don’t just want today with you…  
+I want every year.  
+
+Let’s grow together.  
+Win together.  
+Build a beautiful forever together. 💍  
+
+You are my love. My peace. My future.
 </div>
 
-<button onclick="startSurprise()">Cut The Cake 🎂</button>
+<button onclick="start()">Cut The Cake 🎂</button>
 
 <div class="cake" id="cake">🎂</div>
-
 </div>
 
 <div class="footer">Forever Yours ❤️</div>
 
 <audio id="music" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_33c24bfa2d.mp3?filename=romantic-background-11274.mp3" type="audio/mp3">
+<source src="https://cdn.pixabay.com/download/audio/2023/03/02/audio_ae0aefbd08.mp3?filename=romantic-piano-ambient-141558.mp3" type="audio/mp3">
 </audio>
 
 <script>
 
 // Floating hearts
-for(let i=0;i<25;i++){
+for(let i=0;i<30;i++){
 let heart=document.createElement("div");
 heart.className="heart";
+heart.innerHTML="❤";
 heart.style.left=Math.random()*100+"vw";
 heart.style.animationDuration=(4+Math.random()*4)+"s";
 document.body.appendChild(heart);
 }
 
-function startSurprise(){
-alert("Wait… making your cake special 😈");
+function start(){
+alert("Wait… preparing something special for you 😈");
 document.getElementById("cake").style.display="block";
 document.getElementById("music").play();
 
 setTimeout(()=>{
 alert("I LOVE YOU SO MUCH ❤️");
-fireworks();
+launchFireworks();
 },1500);
 }
 
-function fireworks(){
-for(let i=0;i<20;i++){
-let fire=document.createElement("div");
-fire.className="firework";
-fire.style.left=Math.random()*100+"vw";
-fire.style.top=Math.random()*100+"vh";
-fire.style.background="hsl("+Math.random()*360+",70%,60%)";
-document.body.appendChild(fire);
-setTimeout(()=>{fire.remove();},1000);
+function launchFireworks(){
+for(let i=0;i<25;i++){
+let fw=document.createElement("div");
+fw.className="firework";
+fw.style.left=Math.random()*100+"vw";
+fw.style.top=Math.random()*100+"vh";
+fw.style.background="hsl("+Math.random()*360+",100%,60%)";
+document.body.appendChild(fw);
+setTimeout(()=>{fw.remove();},1000);
 }
 }
 </script>
