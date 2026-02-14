@@ -1,76 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+height:100vh;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+color:white;
+text-align:center;
 }
 
-.container {
-    text-align: center;
-    color: white;
-    animation: fadeIn 2s ease-in-out;
+.container{padding:20px;}
+
+h1{font-family:'Great Vibes',cursive;font-size:38px;}
+
+.name{font-size:24px;margin:5px 0;font-weight:600;}
+
+.message{
+margin-top:10px;
+font-size:14px;
+line-height:1.6;
 }
 
-h1 {
-    font-size: 3em;
-    animation: glow 1.5s infinite alternate;
+.photo{
+margin-top:15px;
 }
 
-p {
-    font-size: 1.5em;
-    margin-top: 20px;
+.photo img{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid white;
+box-shadow:0 0 20px white;
 }
 
-button {
-    margin-top: 30px;
-    padding: 12px 25px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 25px;
-    background: #ffcc00;
-    cursor: pointer;
-    transition: 0.3s;
+button{
+margin-top:20px;
+padding:10px 20px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4e8b;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
 }
 
-button:hover {
-    background: #ffaa00;
-    transform: scale(1.1);
+button:hover{transform:scale(1.1);}
+
+.cake{
+display:none;
+font-size:80px;
+margin-top:15px;
 }
 
-@keyframes glow {
-    from { text-shadow: 0 0 10px #fff; }
-    to { text-shadow: 0 0 25px #ffcc00, 0 0 40px #ff6600; }
+.footer{
+position:absolute;
+bottom:10px;
+font-size:12px;
+opacity:0.8;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Hearts */
+.heart{
+position:absolute;
+width:15px;
+height:15px;
+background:red;
+transform:rotate(45deg);
+animation:float 6s infinite;
 }
 
-.balloon {
-    position: absolute;
-    bottom: -100px;
-    width: 40px;
-    height: 60px;
-    background: red;
-    border-radius: 50%;
-    animation: float 8s infinite;
+.heart::before,
+.heart::after{
+content:"";
+position:absolute;
+width:15px;
+height:15px;
+background:red;
+border-radius:50%;
 }
 
-@keyframes float {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-110vh); }
+.heart::before{top:-7px;}
+.heart::after{left:-7px;}
+
+@keyframes float{
+0%{transform:translateY(0) rotate(45deg);}
+100%{transform:translateY(-110vh) rotate(45deg);}
+}
+
+/* Fireworks */
+.firework{
+position:absolute;
+width:5px;
+height:5px;
+background:yellow;
+border-radius:50%;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);}
+100%{transform:scale(15);opacity:0;}
 }
 </style>
 </head>
@@ -78,23 +120,66 @@ button:hover {
 <body>
 
 <div class="container">
-    <h1>🎉 Happy Birthday Jawad 🎉</h1>
-    <p>You are not just my best friend,<br>you are my brother for life ❤️</p>
-    <button onclick="surprise()">Click for Surprise 🎁</button>
+<h1>Happy Birthday My Love ❤️</h1>
+<div class="name">Naveed Akram</div>
+
+<div class="photo">
+<img src="yourphoto.jpg" alt="Our Photo">
 </div>
 
+<div class="message">
+Today I celebrate the love of my life.  
+Not just your birthday… but our journey.  
+
+Growing together.  
+Winning together.  
+Building forever together 💍
+</div>
+
+<button onclick="startSurprise()">Cut The Cake 🎂</button>
+
+<div class="cake" id="cake">🎂</div>
+
+</div>
+
+<div class="footer">Forever Yours ❤️</div>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_33c24bfa2d.mp3?filename=romantic-background-11274.mp3" type="audio/mp3">
+</audio>
+
 <script>
-function surprise() {
-    alert("May Allah give you unlimited success, health & happiness! 🤲✨");
+
+// Floating hearts
+for(let i=0;i<25;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(heart);
 }
 
-for (let i = 0; i < 10; i++) {
-    let balloon = document.createElement("div");
-    balloon.className = "balloon";
-    balloon.style.left = Math.random() * 100 + "vw";
-    balloon.style.background = "hsl(" + Math.random() * 360 + ", 70%, 60%)";
-    balloon.style.animationDuration = (5 + Math.random() * 5) + "s";
-    document.body.appendChild(balloon);
+function startSurprise(){
+alert("Wait… making your cake special 😈");
+document.getElementById("cake").style.display="block";
+document.getElementById("music").play();
+
+setTimeout(()=>{
+alert("I LOVE YOU SO MUCH ❤️");
+fireworks();
+},1500);
+}
+
+function fireworks(){
+for(let i=0;i<20;i++){
+let fire=document.createElement("div");
+fire.className="firework";
+fire.style.left=Math.random()*100+"vw";
+fire.style.top=Math.random()*100+"vh";
+fire.style.background="hsl("+Math.random()*360+",70%,60%)";
+document.body.appendChild(fire);
+setTimeout(()=>{fire.remove();},1000);
+}
 }
 </script>
 
